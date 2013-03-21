@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Demo</title>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="http://code.angularjs.org/1.1.3/angular.js"></script>
+  <script src="ng-firebase.js"></script>
+</head>
+<body ng-app="ng-firebase" ng-controller="App">
+  <div ng-repeat="book in books">
+    <div>{{book.$id}} : {{book.title}}</div>
+    <button ng-click="books.splice($index,1)">Remove</button>
+  </div>
+  <div>Title: <input ng-model="title"></div>
+  <div>$id: <input ng-mole="bookId"></div>
+  <button ng-click="books.unshift({$id: bookId, title: title})">Add</div>
+</body>
+</html>
