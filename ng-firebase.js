@@ -102,16 +102,23 @@ angular.module('ng-firebase', [])
       });
     });
 
-    collection.$addItem = function(item) {
+    collection.$add = function(item) {
       collectionRef.push(item);
     };
-    collection.$removeItem = function(itemOrId) {
+    collection.$remove = function(itemOrId) {
       var item = angular.isString(itemOrId) ? collection[itemOrId] : itemOrId;
       item.$ref.remove();
     };
 
-    collection.$updateItem = function(itemOrId) {
+    collection.$update = function(itemOrId) {
       var item = angular.isString(itemOrId) ? collection[itemOrId] : itemOrId;
+      var copy = {};
+      angular.forEach(item, function(value, key) {
+        if (key.indexOf('$') !== 0) {
+          copy[key] = value;
+        }
+      });
+      item.$ref.set(copy);
     };
 
     return collection;

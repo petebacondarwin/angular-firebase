@@ -7,13 +7,35 @@
   <script src="http://code.angularjs.org/1.1.3/angular.js"></script>
   <script src="ng-firebase.js"></script>
   <script src="app.js"></script>
+
 </head>
 <body ng-app="app" ng-controller="App">
-  <div ng-repeat="book in books">
-    <div>{{book.$id}} : {{book.title}}</div>
-    <button ng-click="books.$removeItem(book)">Remove</button>
-  </div>
-  <div>Title: <input ng-model="title"></div>
-  <button ng-click="books.$addItem({title: title})">Add</div>
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="book in books">
+        <td><input ng-model="book.title"></td>
+        <td><input ng-model="book.description"></td>
+        <td>
+          <button ng-click="books.$update(book)">Update</button>
+          <button ng-click="books.$remove(book)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form>
+    <legend>Add New</legend>
+    <label for="newBookTitle">Title</label>
+    <input type="text" ng-model="title" id="newBookTitle">
+    <label for="newBookDescription">Description</label>
+    <input type="text" ng-model="description" id="newBookDescription">
+    <button ng-click="books.$add({title: title, description: description})">Add</div>
+  </form>
 </body>
 </html>
