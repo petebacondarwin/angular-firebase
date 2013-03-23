@@ -7,6 +7,6 @@
     "components"
   ],
   "dependencies": {
-    "angular": "~1.x",
+    "angular": "~1.x"
   }
 }

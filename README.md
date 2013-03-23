@@ -52,3 +52,13 @@ This service creates a single binding between an object on the scope and a Fireb
     });
 
 The service returns a promise that will be resolved the first time the binding is initialized.  After that the object will be kept in synch whether updated remotely or on the scope.
+
+# Running the Demo
+
+You will need to install the dependent components (i.e. angularjs) using bower
+
+    bower install
+
+Then open the demo application in a browser
+
+    demo/index.html
